@@ -14,9 +14,18 @@ router.post("/register_login", (req, res, next) => {
 			if (err) {
 				return res.status(400).json({ errors: err });
 			}
-			return res.status(200).json({ success: `logged in ${user.id}` });
+			return res.status(200).json({ user });
 		});
 	})(req, res, next);
+});
+
+router.get("/current_user", (req, res) => {
+	res.send({ user: req.user });
+});
+
+router.get("/logout", (req, res) => {
+	req.logout();
+	res.send({ message: "Logged out", user: req.user });
 });
 
 module.exports = router;

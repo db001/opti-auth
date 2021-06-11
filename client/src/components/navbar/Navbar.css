@@ -1,0 +1,23 @@
+nav {
+	display: flex;
+	background-color: #70cbf4;
+	justify-content: space-between;
+	padding: 0 1rem;
+}
+
+nav p {
+	font-weight: bold;
+}
+
+nav ul {
+	display: flex;
+	list-style: none;
+}
+
+nav ul li {
+	margin-left: 0.5rem;
+}
+
+nav ul li:first-child {
+	margin-left: 0;
+}

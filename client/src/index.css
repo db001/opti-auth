@@ -1,13 +1,24 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+	font-family: "TUI Regular";
+	src: local("TUITypeLt_LATN_W_Rg"), url(./assets/fonts/TUITypeLt_LATN_W_Rg.woff) format("woff"),
+		url(./assets/fonts/TUITypeLt_LATN_W_Rg.ttf) format("ttf");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+	font-family: "TUI Bold";
+	src: local("TUITypeLt_LATN_W_Bd"), url(./assets/fonts/TUITypeLt_LATN_W_Bd.woff) format("woff"),
+		url(./assets/fonts/TUITypeLt_LATN_W_Bd.ttf) format("ttf");
+}
+
+body {
+	font-family: "TUI Regular", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: "TUI Bold", Arial, Helvetica, sans-serif;
 }

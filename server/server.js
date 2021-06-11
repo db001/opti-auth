@@ -25,9 +25,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Express Session
+const SECRET = process.env.SECRET;
+
 app.use(
 	session({
-		secret: "very secret this is",
+		secret: SECRET,
 		resave: false,
 		saveUninitialized: true,
 		store: MongoStore.create({
@@ -44,6 +46,6 @@ app.use(passport.session());
 
 // Routes
 app.use("/api/auth", auth);
-app.get("/", (req, res) => res.send("Good morning sunshine!"));
+app.get("/", (req, res) => res.send("Hello world"));
 
 app.listen(PORT, () => console.log(`Backend listening on port ${PORT}!`));
