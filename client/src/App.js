@@ -25,7 +25,7 @@ class App extends Component {
 		this.state = {
 			user: {},
 			setUser: (user) => {
-				this.setState((prevState) => ({ user }));
+				this.setState(() => ({ user }));
 			},
 		};
 	}
@@ -48,8 +48,6 @@ class App extends Component {
 	};
 
 	render() {
-		// const { user } = this.state;
-		// const { setUser } = this;
 		return (
 			<userContext.Provider value={this.state}>
 				<BrowserRouter>
@@ -58,9 +56,11 @@ class App extends Component {
 						<Route exact path="/">
 							{isEmptyObject(this.state.user) ? <Login /> : <Redirect to="home" />}
 						</Route>
+
 						<Route exact path="/login">
 							{isEmptyObject(this.state.user) ? <Login /> : <Redirect to="home" />}
 						</Route>
+
 						<ProtectedRoute exact path="/home" user={this.state.user} component={Home} redirect={"/login"} />
 
 						<Route exact path="/register">
@@ -68,7 +68,9 @@ class App extends Component {
 						</Route>
 
 						<ProtectedRoute exact path="/wiki" user={this.state.user} component={Wiki} redirect={"/login"} />
+
 						<ProtectedRoute exact path="/ideas" user={this.state.user} component={Ideas} redirect={"/login"} />
+
 						<ProtectedRoute exact path="/snippets" user={this.state.user} component={Snippets} redirect={"/login"} />
 					</div>
 				</BrowserRouter>

@@ -30,11 +30,11 @@ const Navbar = () => {
 	const renderContent = () => {
 		if (isEmptyObject(userState)) {
 			return [
-				<li key="registerLink">
-					<Link to="/register">Register</Link>
-				</li>,
 				<li key="loginLink">
 					<Link to="/login">Login</Link>
+				</li>,
+				<li key="registerLink">
+					<Link to="/register">Register</Link>
 				</li>,
 			];
 		} else {
