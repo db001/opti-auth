@@ -2,10 +2,15 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import axios from "axios";
 
+import ProtectedRoute from "./components/utilities/ProtectedRoute";
+
 import Login from "./components/login/Login";
 import Home from "./components/home/Home";
 import Register from "./components/register/Register";
 import Navbar from "./components/navbar/Navbar";
+import Wiki from "./components/wiki/Wiki";
+import Ideas from "./components/ideas/Ideas";
+import Snippets from "./components/snippets/Snippets";
 
 import { userContext } from "./context/userContext";
 
@@ -56,12 +61,15 @@ class App extends Component {
 						<Route exact path="/login">
 							{isEmptyObject(this.state.user) ? <Login /> : <Redirect to="home" />}
 						</Route>
-						<Route exact path="/home">
-							{isEmptyObject(this.state.user) ? <Redirect to="login" /> : <Home />}
-						</Route>
+						<ProtectedRoute exact path="/home" user={this.state.user} component={Home} redirect={"/login"} />
+
 						<Route exact path="/register">
 							{isEmptyObject(this.state.user) ? <Register /> : <Redirect to="home" />}
 						</Route>
+
+						<ProtectedRoute exact path="/wiki" user={this.state.user} component={Wiki} redirect={"/login"} />
+						<ProtectedRoute exact path="/ideas" user={this.state.user} component={Ideas} redirect={"/login"} />
+						<ProtectedRoute exact path="/snippets" user={this.state.user} component={Snippets} redirect={"/login"} />
 					</div>
 				</BrowserRouter>
 			</userContext.Provider>

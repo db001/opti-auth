@@ -42,9 +42,15 @@ const Navbar = () => {
 				<li key="homeLink">
 					<Link to="/home">Home</Link>
 				</li>,
-				<li key="wikiLink">Wiki</li>,
-				<li key="ideasLink">Ideas Form</li>,
-				<li key="codeLink">Code Snippets</li>,
+				<li key="wikiLink">
+					<Link to="/wiki">Wiki</Link>
+				</li>,
+				<li key="ideasLink">
+					<Link to="/ideas">Idea Form</Link>
+				</li>,
+				<li key="codeLink">
+					<Link to="/snippets">Code Snippets</Link>
+				</li>,
 				<li key="logoutLink">
 					<button onClick={handleLogout}>Logout</button>
 				</li>,
