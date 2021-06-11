@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Redirect } from "react-router";
 
 import { userContext } from "../../context/userContext";
+
+import { isEmptyObject } from "../../helpers";
 
 class Login extends Component {
 	static contextType = userContext;
@@ -26,11 +29,16 @@ class Login extends Component {
 		const { setUser } = this.context;
 		const { email, password } = this.state;
 		const loggedInUser = await this.loginUser({ email, password });
-		if (loggedInUser) {
+		if (!isEmptyObject(loggedInUser)) {
 			setUser(loggedInUser);
-			this.props.history.push("/home");
 		}
 	};
+
+	componentDidMount() {
+		this.setState({
+			user: this.context.user,
+		});
+	}
 
 	onChangeHandler = (e) => {
 		const id = e.target.id;
@@ -41,6 +49,9 @@ class Login extends Component {
 	};
 
 	render() {
+		if (!isEmptyObject(this.state.user)) {
+			return <Redirect to="/home" />;
+		}
 		return (
 			<>
 				<h2>Please log in</h2>
