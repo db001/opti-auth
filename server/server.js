@@ -1,3 +1,10 @@
+/*
+----- TODO -----
+Separate login and register api into different endpoints
+Add email verification
+
+*/
+
 const express = require("express");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -20,7 +27,6 @@ mongoose
 	.then(console.log(`MongoDB connected`))
 	.catch((err) => console.log(err));
 
-// Bodyparser middleware, extended false does not allow nested payloads
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -46,6 +52,5 @@ app.use(passport.session());
 
 // Routes
 app.use("/api/auth", auth);
-app.get("/", (req, res) => res.send("Hello world"));
 
 app.listen(PORT, () => console.log(`Backend listening on port ${PORT}!`));
