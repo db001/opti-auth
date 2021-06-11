@@ -1,34 +1,50 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import { userContext } from "../../context/userContext";
+
 import "./Navbar.css";
 
 class Navbar extends Component {
+	static contextType = userContext;
+
 	state = {
-		auth: false,
+		user: {},
 	};
 
+	handleLogout = () => {
+		return;
+	};
+
+	componentDidMount() {
+		const { user } = this.context;
+		this.setState({ user });
+	}
+
 	renderContent() {
-		switch (this.state.auth) {
+		switch (this.state.user) {
 			case null:
 				return;
 			case false:
 				return [
-					<li>
+					<li key="registerLink">
 						<Link to="/register">Register</Link>
 					</li>,
-					<li>
+					<li key="loginLink">
 						<Link to="/login">Login</Link>
 					</li>,
 				];
 			default:
 				return [
-					<li>
+					<li key="homeLink">
 						<Link to="/home">Home</Link>
 					</li>,
-					<li>Wiki</li>,
-					<li>Ideas Form</li>,
-					<li>Code Snippets</li>,
+					<li key="wikiLink">Wiki</li>,
+					<li key="ideasLink">Ideas Form</li>,
+					<li key="codeLink">Code Snippets</li>,
+					<li key="logoutLink">
+						<button>Logout</button>
+					</li>,
 				];
 		}
 	}
