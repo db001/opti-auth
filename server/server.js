@@ -12,6 +12,7 @@ const mongoose = require("mongoose");
 
 const passport = require("./passport/setup");
 const auth = require("./routes/auth");
+const email = require("./routes/email");
 
 require("dotenv").config();
 
@@ -51,6 +52,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
+app.get("/", (req, res) => {
+	res.send("Hello world");
+});
 app.use("/api/auth", auth);
+app.use("/email", email);
 
 app.listen(PORT, () => console.log(`Backend listening on port ${PORT}!`));
