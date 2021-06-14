@@ -18,8 +18,8 @@ passport.use(
 		// Look for user
 		User.findOne({ email: email })
 			.then((user) => {
-				// Create new user if none found
 				if (!user) {
+					// Create new user if none found
 					const newUser = new User({ email, password });
 					bcrypt.genSalt(10, (err, salt) => {
 						bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -28,7 +28,7 @@ passport.use(
 							newUser
 								.save()
 								.then((user) => {
-									return done(null, user);
+									return done(null, user, { newUser: true });
 								})
 								.catch((err) => {
 									return done(null, false, { message: err });
@@ -42,7 +42,7 @@ passport.use(
 						if (err) throw err;
 
 						if (isMatch) {
-							return done(null, user);
+							return done(null, user, { userExists: true });
 						} else {
 							return done(null, false, { message: "Incorrect password" });
 						}

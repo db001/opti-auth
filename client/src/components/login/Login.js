@@ -20,7 +20,7 @@ class Login extends Component {
 	}
 
 	loginUser = async (creds) => {
-		const res = await axios.post("/api/auth/register_login", creds);
+		const res = await axios.post("/api/auth/login", creds);
 		return res.data.user;
 	};
 
