@@ -28,7 +28,7 @@ const Navbar = () => {
 	}, [user]);
 
 	const renderContent = () => {
-		if (isEmptyObject(userState)) {
+		if (isEmptyObject(userState) || (isEmptyObject(userState) && user.email_is_verified)) {
 			return [
 				<li key="loginLink">
 					<Link to="/login">Login</Link>

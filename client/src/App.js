@@ -11,6 +11,7 @@ import Navbar from "./components/navbar/Navbar";
 import Wiki from "./components/wiki/Wiki";
 import Ideas from "./components/ideas/Ideas";
 import Snippets from "./components/snippets/Snippets";
+import Verify from "./components/verify/Verify";
 
 import { userContext } from "./context/userContext";
 
@@ -54,7 +55,7 @@ class App extends Component {
 					<Navbar />
 					<div id="page">
 						<Route exact path="/">
-							{isEmptyObject(this.state.user) ? <Login /> : <Redirect to="home" />}
+							{isEmptyObject(this.state.user) && this.state.user.email_is_verified ? <Login /> : <Redirect to="home" />}
 						</Route>
 
 						<Route exact path="/login">
@@ -72,6 +73,8 @@ class App extends Component {
 						<ProtectedRoute exact path="/ideas" user={this.state.user} component={Ideas} redirect={"/login"} />
 
 						<ProtectedRoute exact path="/snippets" user={this.state.user} component={Snippets} redirect={"/login"} />
+
+						<ProtectedRoute exact path="/verify" user={this.state.user} component={Verify} redirect={"/login"} />
 					</div>
 				</BrowserRouter>
 			</userContext.Provider>
