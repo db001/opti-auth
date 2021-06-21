@@ -25,7 +25,12 @@ const PORT = 5000;
 const MONGO_URI = `mongodb+srv://${mongoUser}:${mongoPassword}@ideas.udkam.mongodb.net/users?retryWrites=true&w=majority`;
 
 mongoose
-	.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+	.connect(MONGO_URI, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useCreateIndex: true,
+		useFindAndModify: false,
+	})
 	.then(console.log(`MongoDB connected`))
 	.catch((err) => console.log(err));
 
