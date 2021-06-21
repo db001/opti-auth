@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const { randomBytes } = require("crypto");
 const User = require("../models/Users");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -20,11 +21,22 @@ passport.use(
 			.then((user) => {
 				if (!user) {
 					// Create new user if none found
-					const newUser = new User({ email, password });
+
+					// Create random verify token
+					let verify_string;
+
+					randomBytes(256, (err, buf) => {
+						if (err) throw err;
+						verify_string = buf.toString("hex");
+					});
+
+					const newUser = new User({ email, password, verify_string });
+
 					bcrypt.genSalt(10, (err, salt) => {
 						bcrypt.hash(newUser.password, salt, (err, hash) => {
 							if (err) throw err;
 							newUser.password = hash;
+							newUser.verify_string = verify_string;
 							newUser
 								.save()
 								.then((user) => {

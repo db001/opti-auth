@@ -23,6 +23,9 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		default: "user",
 	},
+	verify_string: {
+		type: String,
+	},
 });
 
 module.exports = User = mongoose.model("user", UserSchema);
