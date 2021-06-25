@@ -25,7 +25,7 @@ passport.use(
 					// Create random verify token
 					let verify_string;
 
-					randomBytes(64, (err, buf) => {
+					randomBytes(32, (err, buf) => {
 						if (err) throw err;
 						verify_string = buf.toString("hex");
 					});

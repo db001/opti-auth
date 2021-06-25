@@ -53,6 +53,7 @@ class App extends Component {
 				<BrowserRouter>
 					<Navbar />
 					<div id="page">
+						<p>User is verified = {`${this.state.user.email_is_verified}`}</p>
 						<Route exact path="/">
 							{isEmptyObject(this.state.user) ? <Login /> : <Redirect to="home" />}
 						</Route>
