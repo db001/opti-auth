@@ -63,6 +63,6 @@ app.get("/", (req, res) => {
 });
 app.use("/api/auth", auth);
 app.use("/email", email);
-app.use("/verify", verify);
+app.use("/user/verify", verify);
 
 app.listen(PORT, () => console.log(`Backend listening on port ${PORT}!`));

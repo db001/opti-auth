@@ -47,7 +47,7 @@ const myMail = (to, subject, message, from) => {
 };
 
 const createVerifyEmail = (email, verify_string, from) => {
-	const verifyLink = `http://localhost:3000/verify/${verify_string}`;
+	const verifyLink = `http://localhost:3000/verify/?${verify_string}`;
 
 	const params = {
 		Destination: {

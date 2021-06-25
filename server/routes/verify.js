@@ -5,10 +5,11 @@ const User = require("../models/Users");
 
 router.get("/:params", (req, res) => {
 	const verify = req.params.params;
+	console.log(verify);
 	User.findOneAndUpdate({ verify_string: verify }, { email_is_verified: true })
 		.then((user) => {
 			if (user) {
-				res.status(200).json({ verified: true });
+				res.status(200).json({ user, verified: true });
 			}
 		})
 		.catch((err) => {

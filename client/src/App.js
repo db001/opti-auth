@@ -11,6 +11,7 @@ import Navbar from "./components/navbar/Navbar";
 import Wiki from "./components/wiki/Wiki";
 import Ideas from "./components/ideas/Ideas";
 import Snippets from "./components/snippets/Snippets";
+import Verify from "./components/verify/Verify";
 
 import { userContext } from "./context/userContext";
 
@@ -67,6 +68,8 @@ class App extends Component {
 						<Route exact path="/register">
 							{isEmptyObject(this.state.user) ? <Register /> : <Redirect to="home" />}
 						</Route>
+
+						<Route path="/verify" component={Verify} />
 
 						<ProtectedRoute exact path="/wiki" user={this.state.user} component={Wiki} redirect={"/login"} />
 
