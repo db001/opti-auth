@@ -23,7 +23,7 @@ export class Verify extends Component {
 		if (!verifyString) {
 			this.setState({ codeExists: false });
 		}
-		const response = await axios.get(`/user/verify/${verifyString}`);
+		const response = await axios.get(`/user/verify/code/${verifyString}`);
 		console.log(response.data);
 	};
 
@@ -37,11 +37,11 @@ export class Verify extends Component {
 				<h1>Verify</h1>
 				{!this.state.codeExists && (
 					<p>
-						Sorry, ther's been an issue with verifying your email. Please click here to{" "}
-						<a href="/">to resend your verification email</a>
+						Sorry, there's been an issue with verifying your email. Please click here&nbsp;
+						<a href="/verify/resend">to resend your verification email</a>
 					</p>
 				)}
-				<p>Thanks for verifying</p>
+				{this.state.userIsVerified && <p>Thanks for verifying</p>}
 			</div>
 		);
 	}

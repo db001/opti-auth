@@ -1,7 +1,8 @@
 /*
 ----- TODO -----
-Separate login and register api into different endpoints
+
 Add email verification
+Form verification
 
 */
 

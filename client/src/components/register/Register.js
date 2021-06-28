@@ -79,7 +79,7 @@ class Register extends Component {
 				</form>
 				{this.state.userAlreadyExists && (
 					<p>
-						User already exists, <Link to="/login">login here</Link> or{" "}
+						User already exists, <Link to="/login">login here</Link> or&nbsp;
 						<Link to="/password-reset">reset your password</Link>
 					</p>
 				)}

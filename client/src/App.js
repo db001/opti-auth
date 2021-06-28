@@ -1,3 +1,10 @@
+/*
+----- TODO -----
+
+Form verification
+
+*/
+
 import React, { Component } from "react";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import axios from "axios";
@@ -12,6 +19,7 @@ import Wiki from "./components/wiki/Wiki";
 import Ideas from "./components/ideas/Ideas";
 import Snippets from "./components/snippets/Snippets";
 import Verify from "./components/verify/Verify";
+import VerifyResend from "./components/verify/VerifyResend";
 
 import { userContext } from "./context/userContext";
 
@@ -54,7 +62,6 @@ class App extends Component {
 				<BrowserRouter>
 					<Navbar />
 					<div id="page">
-						<p>User is verified = {`${this.state.user.email_is_verified}`}</p>
 						<Route exact path="/">
 							{isEmptyObject(this.state.user) ? <Login /> : <Redirect to="home" />}
 						</Route>
@@ -69,7 +76,9 @@ class App extends Component {
 							{isEmptyObject(this.state.user) ? <Register /> : <Redirect to="home" />}
 						</Route>
 
-						<Route path="/verify" component={Verify} />
+						<Route path="/verify/resend" component={VerifyResend} />
+
+						<Route path="/verify/code" component={Verify} />
 
 						<ProtectedRoute exact path="/wiki" user={this.state.user} component={Wiki} redirect={"/login"} />
 

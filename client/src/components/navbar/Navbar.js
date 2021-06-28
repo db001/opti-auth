@@ -61,6 +61,7 @@ const Navbar = () => {
 	return (
 		<nav>
 			<p>Optimisation Wiki</p>
+			<span style={{ marginRight: "auto", marginLeft: "1rem" }}>User is verified = {`${user.email_is_verified}`}</span>
 			<ul>{renderContent()}</ul>
 		</nav>
 	);
