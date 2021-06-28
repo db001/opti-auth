@@ -88,7 +88,6 @@ const createVerifyEmail = (email, verify_string, from) => {
 	};
 
 	ses.sendEmail(params, (err, data) => {
-		console.log("sending email");
 		if (err) {
 			return console.log(err, err.stack);
 		} else {
@@ -138,7 +137,6 @@ const resendVerifyEmail = (email, verify_string, from) => {
 	};
 
 	ses.sendEmail(params, (err, data) => {
-		console.log("sending email");
 		if (err) {
 			return console.log(err, err.stack);
 		} else {

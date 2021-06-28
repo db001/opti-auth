@@ -7,7 +7,6 @@ const sesClient = require("../email/ses-client");
 
 router.get("/code/:params", (req, res) => {
 	const verify = req.params.params;
-	console.log(verify);
 	User.findOneAndUpdate({ verify_string: verify }, { email_is_verified: true })
 		.then((user) => {
 			if (user) {
@@ -20,7 +19,6 @@ router.get("/code/:params", (req, res) => {
 });
 
 router.post("/resend", (req, res) => {
-	console.log(req.body);
 	const email = req.body.email;
 	User.findOne({ email })
 		.then((user) => {

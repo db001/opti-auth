@@ -30,7 +30,6 @@ export class VerifyResend extends Component {
 		e.preventDefault();
 		const { email } = this.state;
 		const response = await this.requstVerifyEmail({ email });
-		console.log(response);
 
 		if (response.status === 200 && response.statusText === "OK") {
 			this.setState({

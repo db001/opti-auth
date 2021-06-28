@@ -30,7 +30,6 @@ class Register extends Component {
 		const { setUser } = this.context;
 		const { email, password } = this.state;
 		const response = await this.loginUser({ email, password });
-		console.log(response.user);
 		if (response.userExists) {
 			this.setState({
 				userAlreadyExists: true,

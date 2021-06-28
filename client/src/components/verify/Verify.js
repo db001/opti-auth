@@ -24,7 +24,6 @@ export class Verify extends Component {
 			this.setState({ codeExists: false });
 		}
 		const response = await axios.get(`/user/verify/code/${verifyString}`);
-		console.log(response.data);
 	};
 
 	componentDidMount() {

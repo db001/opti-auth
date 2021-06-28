@@ -1,8 +1,9 @@
 /*
 ----- TODO -----
 
-Add email verification
+Error handling on routes
 Form verification
+Refactor email templates into separate files
 
 */
 

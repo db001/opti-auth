@@ -1,7 +1,8 @@
 /*
 ----- TODO -----
 
-Form verification
+Only email verified users to access site
+Form input verification
 
 */
 

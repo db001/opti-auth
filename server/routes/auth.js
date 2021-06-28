@@ -32,8 +32,6 @@ router.post("/register", (req, res, next) => {
 		}
 
 		if (info.newUser) {
-			console.log("new user");
-
 			sesClient.createVerifyEmail(user.email, user.verify_string);
 
 			return res.status(200).json({ user });
