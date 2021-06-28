@@ -1,6 +1,7 @@
 /*
 ----- TODO -----
 
+Log in shouldn't register users
 Error handling on routes
 Form verification
 Refactor email templates into separate files
